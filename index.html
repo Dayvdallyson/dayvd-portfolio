@@ -1,0 +1,1197 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta
+         name="description"
+         content="Dayvd Costa is a Software Engineer and AI Product Engineer building production AI systems, scalable backends, and polished product interfaces."
+      />
+      <title>Dayvd Costa | Software Engineer & AI Product Engineer</title>
+
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link
+         href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap"
+         rel="stylesheet"
+      />
+      <script src="https://cdn.tailwindcss.com"></script>
+      <script>
+         tailwind.config = { darkMode: "class" };
+
+         (function applyInitialTheme() {
+            try {
+               const savedTheme = localStorage.getItem("theme");
+               const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+               document.documentElement.classList.toggle(
+                  "dark",
+                  savedTheme === "dark" || (!savedTheme && prefersDark),
+               );
+               document.documentElement.classList.add("js-enabled");
+            } catch (error) {
+               document.documentElement.classList.add("js-enabled");
+            }
+         })();
+
+         function handleTechIconError(icon) {
+            icon.classList.add("hidden");
+            const fallback = icon.nextElementSibling;
+            if (fallback) {
+               fallback.classList.remove("hidden");
+            }
+            if (window.lucide) {
+               lucide.createIcons();
+            }
+         }
+      </script>
+      <script src="https://unpkg.com/lucide@latest" defer></script>
+
+      <style>
+         :root {
+            --card: #ffffff;
+            --ring: #a0a0a0;
+            --input: #ffffff;
+            --muted: #e3e3e3;
+            --accent: #f3eac8;
+            --border: #747272;
+            --radius: 0.625rem;
+            --chart-1: #333333;
+            --chart-2: #555555;
+            --chart-3: #777777;
+            --chart-4: #999999;
+            --chart-5: #bbbbbb;
+            --popover: #ffffff;
+            --primary: #606060;
+            --sidebar: #f0f0f0;
+            --spacing: 0.25rem;
+            --font-mono: "Courier New", Courier, monospace;
+            --font-sans: Architects Daughter, sans-serif;
+            --secondary: #dedede;
+            --background: #f9f9f9;
+            --font-serif: "Times New Roman", Times, serif;
+            --foreground: #3a3a3a;
+            --destructive: #c87a7a;
+            --shadow-blur: 5px;
+            --shadow-color: #000000;
+            --sidebar-ring: #a0a0a0;
+            --shadow-spread: 0px;
+            --letter-spacing: 0.5px;
+            --shadow-opacity: 0.03;
+            --sidebar-accent: #f3eac8;
+            --sidebar-border: #c0c0c0;
+            --card-foreground: #3a3a3a;
+            --shadow-offset-x: 1px;
+            --shadow-offset-y: 4px;
+            --sidebar-primary: #606060;
+            --muted-foreground: #505050;
+            --accent-foreground: #5d4037;
+            --popover-foreground: #3a3a3a;
+            --primary-foreground: #f0f0f0;
+            --sidebar-foreground: #3a3a3a;
+            --secondary-foreground: #3a3a3a;
+            --destructive-foreground: #ffffff;
+            --sidebar-accent-foreground: #5d4037;
+            --sidebar-primary-foreground: #f0f0f0;
+         }
+
+         .dark {
+            --card: #333333;
+            --ring: #c0c0c0;
+            --input: #333333;
+            --muted: #454545;
+            --accent: #e0e0e0;
+            --border: #4f4f4f;
+            --radius: 0.625rem;
+            --chart-1: #efefef;
+            --chart-2: #d0d0d0;
+            --chart-3: #b0b0b0;
+            --chart-4: #909090;
+            --chart-5: #707070;
+            --popover: #333333;
+            --primary: #b0b0b0;
+            --sidebar: #212121;
+            --spacing: 0.25rem;
+            --font-mono: "Fira Code", "Courier New", monospace;
+            --font-sans: Architects Daughter, sans-serif;
+            --secondary: #5a5a5a;
+            --background: #2b2b2b;
+            --font-serif: Georgia, serif;
+            --foreground: #dcdcdc;
+            --destructive: #d9afaf;
+            --shadow-blur: 5px;
+            --shadow-color: #000000;
+            --sidebar-ring: #c0c0c0;
+            --shadow-spread: 0px;
+            --letter-spacing: 0.5px;
+            --shadow-opacity: 0.03;
+            --sidebar-accent: #e0e0e0;
+            --sidebar-border: #4f4f4f;
+            --card-foreground: #dcdcdc;
+            --shadow-offset-x: 1px;
+            --shadow-offset-y: 4px;
+            --sidebar-primary: #b0b0b0;
+            --muted-foreground: #a0a0a0;
+            --accent-foreground: #333333;
+            --popover-foreground: #dcdcdc;
+            --primary-foreground: #2b2b2b;
+            --sidebar-foreground: #dcdcdc;
+            --secondary-foreground: #c0c0c0;
+            --destructive-foreground: #2b2b2b;
+            --sidebar-accent-foreground: #333333;
+            --sidebar-primary-foreground: #212121;
+         }
+
+         html {
+            scroll-behavior: smooth;
+         }
+
+         body {
+            background: var(--background);
+            color: var(--foreground);
+            font-family: var(--font-sans);
+            letter-spacing: var(--letter-spacing);
+         }
+
+         ::selection {
+            background: var(--accent);
+            color: var(--accent-foreground);
+         }
+
+         a,
+         button {
+            -webkit-tap-highlight-color: transparent;
+         }
+
+         a:focus-visible,
+         button:focus-visible {
+            outline: 3px solid var(--ring);
+            outline-offset: 4px;
+         }
+
+         .paper-shadow {
+            box-shadow: var(--shadow-offset-x) var(--shadow-offset-y) var(--shadow-blur)
+               var(--shadow-spread) rgb(0 0 0 / var(--shadow-opacity));
+         }
+
+         .notebook-rule {
+            border-bottom: 1px solid color-mix(in srgb, var(--border) 30%, transparent);
+         }
+
+         .section-kicker {
+            color: var(--muted-foreground);
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+         }
+
+         .ink-link {
+            text-decoration-color: var(--muted-foreground);
+            text-decoration-thickness: 1px;
+            text-underline-offset: 5px;
+         }
+
+         .ink-link:hover {
+            color: var(--accent-foreground);
+            text-decoration-color: var(--accent-foreground);
+         }
+
+         .nav-link {
+            color: var(--muted-foreground);
+            transition: color 180ms ease;
+         }
+
+         .nav-link:hover {
+            color: var(--foreground);
+         }
+
+         .theme-button,
+         .icon-button {
+            align-items: center;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            display: inline-flex;
+            height: 2.5rem;
+            justify-content: center;
+            transition:
+               background-color 180ms ease,
+               color 180ms ease,
+               transform 180ms ease;
+            width: 2.5rem;
+         }
+
+         .theme-button:hover,
+         .icon-button:hover {
+            background: var(--accent);
+            color: var(--accent-foreground);
+            transform: translateY(-2px);
+         }
+
+         .primary-button,
+         .secondary-button {
+            align-items: center;
+            border-radius: var(--radius);
+            display: inline-flex;
+            gap: 0.5rem;
+            min-height: 2.75rem;
+            padding: 0.65rem 1rem;
+            transition:
+               background-color 180ms ease,
+               color 180ms ease,
+               transform 180ms ease;
+         }
+
+         .primary-button {
+            background: var(--primary);
+            color: var(--primary-foreground);
+         }
+
+         .secondary-button {
+            border: 1px solid var(--border);
+            color: var(--foreground);
+         }
+
+         .primary-button:hover,
+         .secondary-button:hover {
+            transform: translateY(-2px);
+         }
+
+         .secondary-button:hover {
+            background: var(--accent);
+            color: var(--accent-foreground);
+         }
+
+         .scribble {
+            border-top: 2px dashed var(--border);
+            display: block;
+            margin-top: 1.25rem;
+            max-width: 20rem;
+            transform: rotate(-1deg);
+         }
+
+         .timeline {
+            position: relative;
+         }
+
+         .timeline::before {
+            background: var(--border);
+            content: "";
+            height: 100%;
+            left: 1rem;
+            opacity: 0.55;
+            position: absolute;
+            top: 0;
+            width: 1px;
+         }
+
+         .timeline-entry {
+            padding-left: 3.25rem;
+            position: relative;
+         }
+
+         .timeline-dot {
+            background: var(--accent);
+            border: 2px solid var(--border);
+            border-radius: 999px;
+            height: 0.9rem;
+            left: 0.57rem;
+            position: absolute;
+            top: 1.2rem;
+            width: 0.9rem;
+         }
+
+         .timeline-card,
+         .skill-group,
+         .detail-panel {
+            background: var(--card);
+            border: 1px solid var(--sidebar-border);
+            border-radius: var(--radius);
+         }
+
+         .logo-placeholder {
+            align-items: center;
+            background: var(--sidebar);
+            border: 1px dashed var(--border);
+            border-radius: var(--radius);
+            color: var(--muted-foreground);
+            display: flex;
+            flex: 0 0 auto;
+            font-family: var(--font-mono);
+            font-size: 0.63rem;
+            height: 3.25rem;
+            justify-content: center;
+            line-height: 1.15;
+            padding: 0.35rem;
+            text-align: center;
+            width: 3.25rem;
+         }
+
+         .project-strip {
+            background: color-mix(in srgb, var(--accent) 52%, transparent);
+            border-left: 3px solid var(--border);
+            color: var(--accent-foreground);
+         }
+
+         .tech-chip {
+            align-items: center;
+            background: color-mix(in srgb, var(--sidebar) 62%, transparent);
+            border: 1px solid var(--sidebar-border);
+            border-radius: calc(var(--radius) - 0.18rem);
+            color: var(--foreground);
+            display: inline-flex;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            gap: 0.4rem;
+            line-height: 1;
+            min-height: 2.1rem;
+            padding: 0.42rem 0.62rem;
+         }
+
+         .tech-chip img,
+         .tech-chip svg {
+            flex: 0 0 auto;
+            height: 0.9rem;
+            width: 0.9rem;
+         }
+
+         .tech-chip:hover {
+            background: var(--accent);
+            color: var(--accent-foreground);
+         }
+
+         .js-enabled .reveal {
+            opacity: 0;
+            transform: translateY(0.9rem);
+            transition:
+               opacity 550ms ease,
+               transform 550ms ease;
+         }
+
+         .js-enabled .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+         }
+
+         @media (prefers-reduced-motion: reduce) {
+            html {
+               scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+               animation-duration: 0.01ms !important;
+               scroll-behavior: auto !important;
+               transition-duration: 0.01ms !important;
+            }
+         }
+
+         @media (min-width: 768px) {
+            .timeline::before {
+               left: 1.35rem;
+            }
+
+            .timeline-entry {
+               padding-left: 4.4rem;
+            }
+
+            .timeline-dot {
+               left: 0.92rem;
+            }
+         }
+      </style>
+   </head>
+   <body>
+      <header
+         class="sticky top-0 z-50 border-b backdrop-blur-md"
+         style="
+            border-color: var(--sidebar-border);
+            background: color-mix(in srgb, var(--background) 90%, transparent);
+         "
+      >
+         <nav
+            aria-label="Main navigation"
+            class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8"
+         >
+            <a class="flex shrink-0 items-center gap-2" href="#top" aria-label="Back to top">
+               <span
+                  class="flex h-9 w-9 items-center justify-center border text-sm"
+                  style="
+                     border-color: var(--border);
+                     border-radius: var(--radius);
+                     background: var(--accent);
+                     color: var(--accent-foreground);
+                  "
+                  aria-hidden="true"
+               >
+                  DC
+               </span>
+               <span class="hidden text-sm sm:block">Dayvd Costa</span>
+            </a>
+            <div class="flex min-w-0 items-center gap-3">
+               <div
+                  class="flex items-center gap-4 overflow-x-auto py-1 text-xs sm:gap-5 sm:text-sm"
+                  aria-label="Page sections"
+               >
+                  <a class="nav-link whitespace-nowrap" href="#about">About</a>
+                  <a class="nav-link whitespace-nowrap" href="#experience">Experience</a>
+                  <a class="nav-link whitespace-nowrap" href="#skills">Skills</a>
+                  <a class="nav-link whitespace-nowrap" href="#contact">Contact</a>
+               </div>
+               <button
+                  id="theme-toggle"
+                  class="theme-button shrink-0"
+                  type="button"
+                  aria-label="Toggle color theme"
+                  aria-pressed="false"
+                  title="Toggle color theme"
+               >
+                  <i class="theme-icon-sun h-4 w-4" data-lucide="sun" aria-hidden="true"></i>
+                  <i
+                     class="theme-icon-moon hidden h-4 w-4"
+                     data-lucide="moon"
+                     aria-hidden="true"
+                  ></i>
+               </button>
+            </div>
+         </nav>
+      </header>
+
+      <main id="top">
+         <section class="mx-auto max-w-6xl px-4 pb-20 pt-20 sm:px-6 sm:pb-24 sm:pt-28 lg:px-8">
+            <div class="max-w-4xl">
+               <p class="section-kicker reveal">Software Engineer / AI Product Engineer</p>
+               <h1 class="reveal mt-5 text-5xl leading-tight sm:text-7xl">Dayvd Costa</h1>
+               <p class="reveal mt-7 max-w-3xl text-xl leading-relaxed sm:text-2xl">
+                  I ship production AI products end-to-end: grounded LLM systems, scalable backends,
+                  and interfaces people keep using.
+               </p>
+               <span class="scribble reveal" aria-hidden="true"></span>
+               <p
+                  class="reveal mt-6 flex items-center gap-2 text-sm"
+                  style="color: var(--muted-foreground)"
+               >
+                  <i class="h-4 w-4" data-lucide="map-pin" aria-hidden="true"></i>
+                  Rio de Janeiro, Brazil <span aria-hidden="true">·</span> Remote
+               </p>
+               <div class="reveal mt-8 flex flex-wrap gap-3">
+                  <a
+                     class="primary-button paper-shadow"
+                     href="mailto:dayvdallyson21@gmail.com"
+                     aria-label="Email Dayvd Costa"
+                  >
+                     <i class="h-4 w-4" data-lucide="mail" aria-hidden="true"></i>
+                     Get in touch
+                  </a>
+                  <!-- Replace this href with Dayvd's hosted LinkedIn profile URL. -->
+                  <a class="secondary-button" href="#" aria-label="Dayvd Costa on LinkedIn">
+                     <i class="h-4 w-4" data-lucide="linkedin" aria-hidden="true"></i>
+                     LinkedIn
+                  </a>
+                  <!-- Replace this href with Dayvd's hosted GitHub profile URL. -->
+                  <a class="secondary-button" href="#" aria-label="Dayvd Costa on GitHub">
+                     <i class="h-4 w-4" data-lucide="github" aria-hidden="true"></i>
+                     GitHub
+                  </a>
+               </div>
+            </div>
+         </section>
+
+         <div class="notebook-rule mx-auto max-w-6xl" aria-hidden="true"></div>
+
+         <section id="about" class="mx-auto max-w-6xl scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8">
+            <div class="reveal grid gap-6 md:grid-cols-[12rem_minmax(0,1fr)]">
+               <div>
+                  <p class="section-kicker">01 / About</p>
+                  <h2 class="mt-3 text-3xl">A builder across the stack.</h2>
+               </div>
+               <p class="max-w-3xl text-lg leading-8">
+                  For more than five years, I have taken software from early product questions to
+                  reliable production delivery. My work sits at the intersection of AI, backend
+                  architecture, and frontend craft: designing RAG pipelines, automating workflows
+                  with LLMs, building dependable APIs, and shipping the product surfaces that make
+                  complex systems useful.
+               </p>
+            </div>
+         </section>
+
+         <section
+            id="experience"
+            class="scroll-mt-24 border-y"
+            style="
+               border-color: var(--sidebar-border);
+               background: color-mix(in srgb, var(--sidebar) 54%, transparent);
+            "
+         >
+            <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
+               <div class="reveal max-w-2xl">
+                  <p class="section-kicker">02 / Experience</p>
+                  <h2 class="mt-3 text-3xl sm:text-4xl">Systems built and shipped.</h2>
+               </div>
+
+               <div class="timeline mt-12 space-y-7">
+                  <article class="timeline-entry reveal">
+                     <span class="timeline-dot" aria-hidden="true"></span>
+                     <div class="timeline-card paper-shadow p-5 sm:p-7">
+                        <div
+                           class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between"
+                        >
+                           <div class="flex gap-4">
+                              <!-- Replace this placeholder with an <img> using the hosted Intentus Digital logo URL. -->
+                              <div
+                                 class="logo-placeholder"
+                                 role="img"
+                                 aria-label="Intentus Digital logo placeholder"
+                              >
+                                 Intentus<br />logo
+                              </div>
+                              <div>
+                                 <p class="section-kicker">Full-time · Remote</p>
+                                 <!-- Replace this href with the Intentus Digital LinkedIn or website URL. -->
+                                 <h3 class="mt-1 text-2xl">
+                                    <a class="ink-link underline" href="#">Intentus Digital</a>
+                                 </h3>
+                                 <p class="mt-1 text-sm" style="color: var(--muted-foreground)">
+                                    Software Engineer · Tech Lead
+                                 </p>
+                              </div>
+                           </div>
+                           <p class="font-mono text-xs" style="color: var(--muted-foreground)">
+                              Feb 2024 — Present
+                           </p>
+                        </div>
+
+                        <div class="project-strip mt-5 px-4 py-3 text-sm">
+                           Building
+                           <!-- Replace this href with the dotless LinkedIn or website URL. -->
+                           <a href="#" class="ink-link font-semibold underline">dotless</a>, a
+                           financial-advisory platform.
+                        </div>
+
+                        <ul class="mt-5 list-disc space-y-3 pl-5 text-sm leading-7 sm:text-base">
+                           <li>
+                              Lead architecture decisions, stakeholder alignment, and delivery
+                              across the team.
+                           </li>
+                           <li>
+                              Designed and shipped RAG pipelines and chatbot automation using the
+                              Anthropic Claude and OpenAI APIs.
+                           </li>
+                           <li>
+                              Integrated Pluggy Open Finance, Google OAuth, DocuSign signatures,
+                              cloud storage, SendGrid email, and a documented Swagger REST API.
+                           </li>
+                           <li>
+                              Built the platform full-stack with React, Vite, TanStack Query,
+                              Node.js, Express, PostgreSQL, and Drizzle ORM.
+                           </li>
+                        </ul>
+                     </div>
+                  </article>
+
+                  <article class="timeline-entry reveal">
+                     <span class="timeline-dot" aria-hidden="true"></span>
+                     <div class="timeline-card paper-shadow p-5 sm:p-7">
+                        <div
+                           class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between"
+                        >
+                           <div class="flex gap-4">
+                              <!-- Replace this placeholder with an <img> using the hosted Clip Fy logo URL. -->
+                              <div
+                                 class="logo-placeholder"
+                                 role="img"
+                                 aria-label="Clip Fy logo placeholder"
+                              >
+                                 Clip Fy<br />logo
+                              </div>
+                              <div>
+                                 <p class="section-kicker">Temporary · Remote</p>
+                                 <!-- Replace this href with the Clip Fy LinkedIn or website URL. -->
+                                 <h3 class="mt-1 text-2xl">
+                                    <a class="ink-link underline" href="#">Clip Fy</a>
+                                 </h3>
+                                 <p class="mt-1 text-sm" style="color: var(--muted-foreground)">
+                                    Software Engineer
+                                 </p>
+                              </div>
+                           </div>
+                           <p class="font-mono text-xs" style="color: var(--muted-foreground)">
+                              Jan 2025 — May 2026
+                           </p>
+                        </div>
+
+                        <ul class="mt-5 list-disc space-y-3 pl-5 text-sm leading-7 sm:text-base">
+                           <li>
+                              Ran user discovery, defined the roadmap, and launched the MVP to
+                              production with full product and engineering ownership.
+                           </li>
+                           <li>
+                              Shipped a FastAPI, Celery, Redis, and Whisper pipeline that turns one
+                              hour of video into 8–12 subtitled clips in roughly 7–10 minutes on a
+                              single 2-vCPU worker.
+                           </li>
+                           <li>
+                              Cut AI processing costs by 50% through model benchmarking, from more
+                              than US$0.80 to US$0.35–0.40 per hour of video.
+                           </li>
+                           <li>
+                              Built resilient task processing, PostgreSQL-backed Stripe
+                              monetization, quota control, pre-signed uploads, and deployment on
+                              GCP, Cloudflare R2, and Vercel.
+                           </li>
+                        </ul>
+                     </div>
+                  </article>
+
+                  <article class="timeline-entry reveal">
+                     <span class="timeline-dot" aria-hidden="true"></span>
+                     <div class="timeline-card paper-shadow p-5 sm:p-7">
+                        <div
+                           class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between"
+                        >
+                           <div class="flex gap-4">
+                              <!-- Replace this placeholder with an <img> using the hosted Realtor logo URL. -->
+                              <div
+                                 class="logo-placeholder"
+                                 role="img"
+                                 aria-label="Realtor logo placeholder"
+                              >
+                                 Realtor<br />logo
+                              </div>
+                              <div>
+                                 <p class="section-kicker">Full-time · On-site</p>
+                                 <!-- Replace this href with the Realtor LinkedIn or website URL. -->
+                                 <h3 class="mt-1 text-2xl">
+                                    <a class="ink-link underline" href="#">Realtor</a>
+                                 </h3>
+                                 <p class="mt-1 text-sm" style="color: var(--muted-foreground)">
+                                    Software Engineer
+                                 </p>
+                              </div>
+                           </div>
+                           <p class="font-mono text-xs" style="color: var(--muted-foreground)">
+                              Jan 2022 — Jan 2024
+                           </p>
+                        </div>
+
+                        <ul class="mt-5 list-disc space-y-3 pl-5 text-sm leading-7 sm:text-base">
+                           <li>
+                              Developed full-stack features for a real-estate brokerage platform
+                              using Django, Python, and PostgreSQL.
+                           </li>
+                           <li>
+                              Containerized development and deployment with Docker while keeping the
+                              backend clean, testable, and aligned with SOLID principles.
+                           </li>
+                           <li>
+                              Improved frontend performance and accessibility with React, Next.js,
+                              TypeScript, and Tailwind CSS.
+                           </li>
+                        </ul>
+                     </div>
+                  </article>
+               </div>
+            </div>
+         </section>
+
+         <section id="skills" class="mx-auto max-w-6xl scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8">
+            <div class="reveal max-w-2xl">
+               <p class="section-kicker">03 / Skills</p>
+               <h2 class="mt-3 text-3xl sm:text-4xl">Tools I reach for.</h2>
+            </div>
+
+            <div class="mt-10 grid gap-4 md:grid-cols-2">
+               <article class="skill-group reveal p-5 paper-shadow">
+                  <h3 class="text-xl">Languages</h3>
+                  <div class="mt-4 flex flex-wrap gap-2">
+                     <span class="tech-chip">
+                        <img
+                           src="https://cdn.simpleicons.org/python/505050/dcdcdc"
+                           alt="Python icon"
+                           aria-label="Python icon"
+                           onerror="handleTechIconError(this)"
+                        />
+                        <i class="hidden" data-lucide="code-2" aria-hidden="true"></i
+                        ><span>Python</span>
+                     </span>
+                     <span class="tech-chip">
+                        <img
+                           src="https://cdn.simpleicons.org/typescript/505050/dcdcdc"
+                           alt="TypeScript icon"
+                           aria-label="TypeScript icon"
+                           onerror="handleTechIconError(this)"
+                        />
+                        <i class="hidden" data-lucide="code-2" aria-hidden="true"></i
+                        ><span>TypeScript</span>
+                     </span>
+                     <span class="tech-chip">
+                        <img
+                           src="https://cdn.simpleicons.org/javascript/505050/dcdcdc"
+                           alt="JavaScript icon"
+                           aria-label="JavaScript icon"
+                           onerror="handleTechIconError(this)"
+                        />
+                        <i class="hidden" data-lucide="code-2" aria-hidden="true"></i
+                        ><span>JavaScript</span>
+                     </span>
+                     <span class="tech-chip"
+                        ><i data-lucide="database" aria-hidden="true"></i><span>SQL</span></span
+                     >
+                  </div>
+               </article>
+
+               <article class="skill-group reveal p-5 paper-shadow">
+                  <h3 class="text-xl">AI / LLMs</h3>
+                  <div class="mt-4 flex flex-wrap gap-2">
+                     <span class="tech-chip">
+                        <img
+                           src="https://cdn.simpleicons.org/anthropic/505050/dcdcdc"
+                           alt="Anthropic icon"
+                           aria-label="Anthropic icon"
+                           onerror="handleTechIconError(this)"
+                        />
+                        <i class="hidden" data-lucide="bot" aria-hidden="true"></i
+                        ><span>Claude API</span>
+                     </span>
+                     <span class="tech-chip">
+                        <img
+                           src="https://cdn.simpleicons.org/openai/505050/dcdcdc"
+                           alt="OpenAI icon"
+                           aria-label="OpenAI icon"
+                           onerror="handleTechIconError(this)"
+                        />
+                        <i class="hidden" data-lucide="bot" aria-hidden="true"></i
+                        ><span>OpenAI API</span>
+                     </span>
+                     <span class="tech-chip"
+                        ><i data-lucide="audio-lines" aria-hidden="true"></i
+                        ><span>Whisper</span></span
+                     >
+                     <span class="tech-chip"
+                        ><i data-lucide="library" aria-hidden="true"></i><span>RAG</span></span
+                     >
+                     <span class="tech-chip"
+                        ><i data-lucide="bot" aria-hidden="true"></i
+                        ><span>AI agents &amp; automation</span></span
+                     >
+                     <span class="tech-chip"
+                        ><i data-lucide="sparkles" aria-hidden="true"></i
+                        ><span>Prompt engineering</span></span
+                     >
+                     <span class="tech-chip"
+                        ><i data-lucide="gauge" aria-hidden="true"></i
+                        ><span>Model evaluation</span></span
+                     >
+                  </div>
+               </article>
+
+               <article class="skill-group reveal p-5 paper-shadow">
+                  <h3 class="text-xl">Backend</h3>
+                  <div class="mt-4 flex flex-wrap gap-2">
+                     <span class="tech-chip">
+                        <img
+                           src="https://cdn.simpleicons.org/fastapi/505050/dcdcdc"
+                           alt="FastAPI icon"
+                           aria-label="FastAPI icon"
+                           onerror="handleTechIconError(this)"
+                        />
+                        <i class="hidden" data-lucide="server" aria-hidden="true"></i
+                        ><span>FastAPI</span>
+                     </span>
+                     <span class="tech-chip">
+                        <img
+                           src="https://cdn.simpleicons.org/django/505050/dcdcdc"
+                           alt="Django icon"
+                           aria-label="Django icon"
+                           onerror="handleTechIconError(this)"
+                        />
+                        <i class="hidden" data-lucide="server" aria-hidden="true"></i
+                        ><span>Django</span>
+                     </span>
+                     <span class="tech-chip">
+                        <img
+                           src="https://cdn.simpleicons.org/nodedotjs/505050/dcdcdc"
+                           alt="Node.js icon"
+                           aria-label="Node.js icon"
+                           onerror="handleTechIconError(this)"
+                        />
+                        <i class="hidden" data-lucide="server" aria-hidden="true"></i
+                        ><span>Node.js</span>
+                     </span>
+                     <span class="tech-chip">
+                        <img
+                           src="https://cdn.simpleicons.org/express/505050/dcdcdc"
+                           alt="Express icon"
+                           aria-label="Express icon"
+                           onerror="handleTechIconError(this)"
+                        />
+                        <i class="hidden" data-lucide="server" aria-hidden="true"></i
+                        ><span>Express</span>
+                     </span>
+                     <span class="tech-chip">
+                        <img
+                           src="https://cdn.simpleicons.org/celery/505050/dcdcdc"
+                           alt="Celery icon"
+                           aria-label="Celery icon"
+                           onerror="handleTechIconError(this)"
+                        />
+                        <i class="hidden" data-lucide="workflow" aria-hidden="true"></i
+                        ><span>Celery</span>
+                     </span>
+                     <span class="tech-chip">
+                        <img
+                           src="https://cdn.simpleicons.org/redis/505050/dcdcdc"
+                           alt="Redis icon"
+                           aria-label="Redis icon"
+                           onerror="handleTechIconError(this)"
+                        />
+                        <i class="hidden" data-lucide="database" aria-hidden="true"></i
+                        ><span>Redis</span>
+                     </span>
+                     <span class="tech-chip">
+                        <img
+                           src="https://cdn.simpleicons.org/postgresql/505050/dcdcdc"
+                           alt="PostgreSQL icon"
+                           aria-label="PostgreSQL icon"
+                           onerror="handleTechIconError(this)"
+                        />
+                        <i class="hidden" data-lucide="database" aria-hidden="true"></i
+                        ><span>PostgreSQL</span>
+                     </span>
+                     <span class="tech-chip">
+                        <img
+                           src="https://cdn.simpleicons.org/mongodb/505050/dcdcdc"
+                           alt="MongoDB icon"
+                           aria-label="MongoDB icon"
+                           onerror="handleTechIconError(this)"
+                        />
+                        <i class="hidden" data-lucide="database" aria-hidden="true"></i
+                        ><span>MongoDB</span>
+                     </span>
+                     <span class="tech-chip"
+                        ><i data-lucide="database" aria-hidden="true"></i
+                        ><span>Drizzle ORM</span></span
+                     >
+                     <span class="tech-chip"
+                        ><i data-lucide="braces" aria-hidden="true"></i><span>REST APIs</span></span
+                     >
+                     <span class="tech-chip">
+                        <img
+                           src="https://cdn.simpleicons.org/swagger/505050/dcdcdc"
+                           alt="Swagger icon"
+                           aria-label="Swagger icon"
+                           onerror="handleTechIconError(this)"
+                        />
+                        <i class="hidden" data-lucide="file-code-2" aria-hidden="true"></i
+                        ><span>Swagger / OpenAPI</span>
+                     </span>
+                  </div>
+               </article>
+
+               <article class="skill-group reveal p-5 paper-shadow">
+                  <h3 class="text-xl">Frontend</h3>
+                  <div class="mt-4 flex flex-wrap gap-2">
+                     <span class="tech-chip">
+                        <img
+                           src="https://cdn.simpleicons.org/react/505050/dcdcdc"
+                           alt="React icon"
+                           aria-label="React icon"
+                           onerror="handleTechIconError(this)"
+                        />
+                        <i class="hidden" data-lucide="panels-top-left" aria-hidden="true"></i
+                        ><span>React</span>
+                     </span>
+                     <span class="tech-chip">
+                        <img
+                           src="https://cdn.simpleicons.org/nextdotjs/505050/dcdcdc"
+                           alt="Next.js icon"
+                           aria-label="Next.js icon"
+                           onerror="handleTechIconError(this)"
+                        />
+                        <i class="hidden" data-lucide="panels-top-left" aria-hidden="true"></i
+                        ><span>Next.js</span>
+                     </span>
+                     <span class="tech-chip">
+                        <img
+                           src="https://cdn.simpleicons.org/vite/505050/dcdcdc"
+                           alt="Vite icon"
+                           aria-label="Vite icon"
+                           onerror="handleTechIconError(this)"
+                        />
+                        <i class="hidden" data-lucide="zap" aria-hidden="true"></i><span>Vite</span>
+                     </span>
+                     <span class="tech-chip"
+                        ><i data-lucide="refresh-cw" aria-hidden="true"></i
+                        ><span>TanStack Query</span></span
+                     >
+                     <span class="tech-chip">
+                        <img
+                           src="https://cdn.simpleicons.org/tailwindcss/505050/dcdcdc"
+                           alt="Tailwind CSS icon"
+                           aria-label="Tailwind CSS icon"
+                           onerror="handleTechIconError(this)"
+                        />
+                        <i class="hidden" data-lucide="paintbrush" aria-hidden="true"></i
+                        ><span>Tailwind CSS</span>
+                     </span>
+                     <span class="tech-chip">
+                        <img
+                           src="https://cdn.simpleicons.org/radixui/505050/dcdcdc"
+                           alt="Radix UI icon"
+                           aria-label="Radix UI icon"
+                           onerror="handleTechIconError(this)"
+                        />
+                        <i class="hidden" data-lucide="component" aria-hidden="true"></i
+                        ><span>Radix UI</span>
+                     </span>
+                  </div>
+               </article>
+
+               <article class="skill-group reveal p-5 paper-shadow">
+                  <h3 class="text-xl">Cloud &amp; DevOps</h3>
+                  <div class="mt-4 flex flex-wrap gap-2">
+                     <span class="tech-chip">
+                        <img
+                           src="https://cdn.simpleicons.org/googlecloud/505050/dcdcdc"
+                           alt="Google Cloud icon"
+                           aria-label="Google Cloud icon"
+                           onerror="handleTechIconError(this)"
+                        />
+                        <i class="hidden" data-lucide="cloud" aria-hidden="true"></i
+                        ><span>GCP</span>
+                     </span>
+                     <span class="tech-chip"
+                        ><i data-lucide="cloud" aria-hidden="true"></i><span>AWS S3</span></span
+                     >
+                     <span class="tech-chip">
+                        <img
+                           src="https://cdn.simpleicons.org/cloudflare/505050/dcdcdc"
+                           alt="Cloudflare icon"
+                           aria-label="Cloudflare icon"
+                           onerror="handleTechIconError(this)"
+                        />
+                        <i class="hidden" data-lucide="cloud" aria-hidden="true"></i
+                        ><span>Cloudflare R2</span>
+                     </span>
+                     <span class="tech-chip">
+                        <img
+                           src="https://cdn.simpleicons.org/docker/505050/dcdcdc"
+                           alt="Docker icon"
+                           aria-label="Docker icon"
+                           onerror="handleTechIconError(this)"
+                        />
+                        <i class="hidden" data-lucide="container" aria-hidden="true"></i
+                        ><span>Docker</span>
+                     </span>
+                     <span class="tech-chip">
+                        <img
+                           src="https://cdn.simpleicons.org/githubactions/505050/dcdcdc"
+                           alt="GitHub Actions icon"
+                           aria-label="GitHub Actions icon"
+                           onerror="handleTechIconError(this)"
+                        />
+                        <i class="hidden" data-lucide="workflow" aria-hidden="true"></i
+                        ><span>GitHub Actions</span>
+                     </span>
+                     <span class="tech-chip"
+                        ><i data-lucide="workflow" aria-hidden="true"></i><span>CI / CD</span></span
+                     >
+                     <span class="tech-chip">
+                        <img
+                           src="https://cdn.simpleicons.org/vercel/505050/dcdcdc"
+                           alt="Vercel icon"
+                           aria-label="Vercel icon"
+                           onerror="handleTechIconError(this)"
+                        />
+                        <i class="hidden" data-lucide="cloud" aria-hidden="true"></i
+                        ><span>Vercel</span>
+                     </span>
+                  </div>
+               </article>
+
+               <article class="skill-group reveal p-5 paper-shadow">
+                  <h3 class="text-xl">Integrations &amp; Payments</h3>
+                  <div class="mt-4 flex flex-wrap gap-2">
+                     <span class="tech-chip">
+                        <img
+                           src="https://cdn.simpleicons.org/stripe/505050/dcdcdc"
+                           alt="Stripe icon"
+                           aria-label="Stripe icon"
+                           onerror="handleTechIconError(this)"
+                        />
+                        <i class="hidden" data-lucide="credit-card" aria-hidden="true"></i
+                        ><span>Stripe</span>
+                     </span>
+                     <span class="tech-chip"
+                        ><i data-lucide="landmark" aria-hidden="true"></i
+                        ><span>Pluggy / Open Finance</span></span
+                     >
+                     <span class="tech-chip">
+                        <img
+                           src="https://cdn.simpleicons.org/google/505050/dcdcdc"
+                           alt="Google icon"
+                           aria-label="Google icon"
+                           onerror="handleTechIconError(this)"
+                        />
+                        <i class="hidden" data-lucide="key-round" aria-hidden="true"></i
+                        ><span>Google OAuth</span>
+                     </span>
+                     <span class="tech-chip"
+                        ><i data-lucide="file-signature" aria-hidden="true"></i
+                        ><span>DocuSign</span></span
+                     >
+                     <span class="tech-chip">
+                        <img
+                           src="https://cdn.simpleicons.org/sendgrid/505050/dcdcdc"
+                           alt="SendGrid icon"
+                           aria-label="SendGrid icon"
+                           onerror="handleTechIconError(this)"
+                        />
+                        <i class="hidden" data-lucide="send" aria-hidden="true"></i
+                        ><span>SendGrid</span>
+                     </span>
+                  </div>
+               </article>
+            </div>
+         </section>
+
+         <section
+            id="education"
+            class="scroll-mt-24 border-y"
+            style="
+               border-color: var(--sidebar-border);
+               background: color-mix(in srgb, var(--sidebar) 54%, transparent);
+            "
+         >
+            <div class="mx-auto grid max-w-6xl gap-4 px-4 py-20 sm:px-6 md:grid-cols-2 lg:px-8">
+               <article class="detail-panel reveal p-6 paper-shadow">
+                  <p class="section-kicker">04 / Education</p>
+                  <i class="mt-5 h-6 w-6" data-lucide="graduation-cap" aria-hidden="true"></i>
+                  <h2 class="mt-4 text-2xl">B.Sc. in Computer Science</h2>
+                  <p class="mt-2" style="color: var(--muted-foreground)">
+                     Estácio · Rio de Janeiro
+                  </p>
+                  <p class="mt-1 font-mono text-xs" style="color: var(--muted-foreground)">
+                     Jan 2022 — Dec 2025
+                  </p>
+               </article>
+               <article class="detail-panel reveal p-6 paper-shadow">
+                  <p class="section-kicker">05 / Languages</p>
+                  <i class="mt-5 h-6 w-6" data-lucide="languages" aria-hidden="true"></i>
+                  <div class="mt-4 space-y-3">
+                     <p class="flex justify-between gap-4">
+                        <span class="text-xl">English</span>
+                        <span style="color: var(--muted-foreground)">Highly proficient</span>
+                     </p>
+                     <p class="flex justify-between gap-4">
+                        <span class="text-xl">Portuguese</span>
+                        <span style="color: var(--muted-foreground)">Native speaker</span>
+                     </p>
+                  </div>
+               </article>
+            </div>
+         </section>
+      </main>
+
+      <footer id="contact" class="scroll-mt-24">
+         <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
+            <div class="reveal grid gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-end">
+               <div>
+                  <p class="section-kicker">06 / Contact</p>
+                  <h2 class="mt-3 max-w-2xl text-3xl sm:text-4xl">
+                     Let’s build software people can rely on.
+                  </h2>
+                  <div class="mt-6 space-y-3 text-sm sm:text-base">
+                     <a
+                        class="ink-link flex w-fit items-center gap-2 underline"
+                        href="mailto:dayvdallyson21@gmail.com"
+                        aria-label="Email Dayvd Costa"
+                     >
+                        <i class="h-4 w-4" data-lucide="mail" aria-hidden="true"></i>
+                        dayvdallyson21@gmail.com
+                     </a>
+                     <a
+                        class="ink-link flex w-fit items-center gap-2 underline"
+                        href="tel:+5521990775852"
+                        aria-label="Call Dayvd Costa"
+                     >
+                        <i class="h-4 w-4" data-lucide="phone" aria-hidden="true"></i>
+                        +55 (21) 99077-5852
+                     </a>
+                  </div>
+               </div>
+               <div class="flex gap-3">
+                  <!-- Replace this href with Dayvd's hosted LinkedIn profile URL. -->
+                  <a
+                     class="icon-button"
+                     href="#"
+                     aria-label="Dayvd Costa on LinkedIn"
+                     title="LinkedIn"
+                  >
+                     <i class="h-4 w-4" data-lucide="linkedin" aria-hidden="true"></i>
+                  </a>
+                  <!-- Replace this href with Dayvd's hosted GitHub profile URL. -->
+                  <a class="icon-button" href="#" aria-label="Dayvd Costa on GitHub" title="GitHub">
+                     <i class="h-4 w-4" data-lucide="github" aria-hidden="true"></i>
+                  </a>
+               </div>
+            </div>
+            <div
+               class="notebook-rule mt-14 flex flex-col gap-3 pb-5 pt-6 text-xs sm:flex-row sm:justify-between"
+               style="color: var(--muted-foreground)"
+            >
+               <p>Dayvd Costa · Software Engineer / AI Product Engineer</p>
+               <p>Rio de Janeiro, Brazil · Remote</p>
+            </div>
+         </div>
+      </footer>
+
+      <script>
+         document.addEventListener("DOMContentLoaded", () => {
+            const root = document.documentElement;
+            const themeToggle = document.getElementById("theme-toggle");
+            const sunIcon = document.querySelector(".theme-icon-sun");
+            const moonIcon = document.querySelector(".theme-icon-moon");
+
+            const syncThemeButton = () => {
+               const isDark = root.classList.contains("dark");
+               themeToggle.setAttribute("aria-pressed", String(isDark));
+               sunIcon.classList.toggle("hidden", isDark);
+               moonIcon.classList.toggle("hidden", !isDark);
+            };
+
+            themeToggle.addEventListener("click", () => {
+               const isDark = root.classList.toggle("dark");
+               try {
+                  localStorage.setItem("theme", isDark ? "dark" : "light");
+               } catch (error) {
+                  // Theme switching still works when storage is restricted.
+               }
+               syncThemeButton();
+            });
+
+            const revealElements = document.querySelectorAll(".reveal");
+            if ("IntersectionObserver" in window) {
+               const observer = new IntersectionObserver(
+                  (entries, revealObserver) => {
+                     entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                           entry.target.classList.add("is-visible");
+                           revealObserver.unobserve(entry.target);
+                        }
+                     });
+                  },
+                  { threshold: 0.08 },
+               );
+
+               revealElements.forEach((element) => observer.observe(element));
+            } else {
+               revealElements.forEach((element) => element.classList.add("is-visible"));
+            }
+
+            syncThemeButton();
+            lucide.createIcons();
+         });
+      </script>
+   </body>
+</html>
